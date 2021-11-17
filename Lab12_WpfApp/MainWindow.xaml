@@ -1,0 +1,49 @@
+﻿<Window x:Class="Lab12_WpfApp.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Lab12_WpfApp"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="150" Width="400">
+    <Window.Resources>
+        <Style TargetType="CheckBox">
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="CheckBox" >
+                        <Grid Height="Auto" Width="Auto">
+                            <Grid.RowDefinitions>
+                                <RowDefinition />
+                                <RowDefinition />
+                            </Grid.RowDefinitions>
+                            <Rectangle x:Name="rect" Stroke="Black" Width="30" Height="30" RadiusX="3" RadiusY="3"/>
+                            <Ellipse x:Name="el" Opacity="0" Fill="Black" Width="15" Height="15"/>
+                            <Path x:Name="cross" Opacity="0" Data="M114.54382,74.58692 L116.00074,74.580634 124.50303,83.968003 133.1387,74.533628 134.4187,74.543435 125.56332,84.521211 134.50574,94.53546 133.20539,94.521792 124.46302,85.141247 115.80458,94.54513 114.54334,94.54513 123.46942,84.534545 z"  Height="21.01"  Stretch="Fill" Fill="Black" Stroke="Black" StrokeThickness="1"  Width="20.957" RenderTransformOrigin="0.368,0.251"/>
+                            <ContentPresenter Grid.Row=" 1" Content="{TemplateBinding Content}" HorizontalAlignment="Center"/>
+                        </Grid>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsChecked" Value="True">
+                                <Setter TargetName="cross" Property="Opacity" Value="1"/>
+                            </Trigger>
+                            <Trigger Property="IsChecked" Value="{x:Null}">
+                                <Setter TargetName="el" Property="Opacity" Value="1"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </Window.Resources>
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <CheckBox Grid.Column="0" Content="Checked" IsThreeState="True" IsChecked="False"/>
+        <CheckBox Grid.Column="1" Content="UnChecked" IsThreeState="True" IsChecked="True"/>
+        <CheckBox Grid.Column="2" Content="Indeterminate" IsThreeState="True" IsChecked="{x:Null}"/>
+    </Grid>
+
+</Window>
